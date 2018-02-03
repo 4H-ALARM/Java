@@ -33,7 +33,6 @@ public class RobotMap {
     public static Compressor compressor;
     public static DoubleSolenoid dsClawLift;
     public static DoubleSolenoid dsClawDeploy;
-    
     public static DoubleSolenoid dsArmControl;
     
     

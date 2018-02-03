@@ -50,10 +50,18 @@ public class OI {
 
 		SmartDashboard.putData("DriveToLine", new DriveToLine());
 		SmartDashboard.putData("DriveWithJoysticks", new DriveWithJoysticks());
-		SmartDashboard.putData("ElevatorUp", new TiltClaw('u'));
-		SmartDashboard.putData("ElevatorDown", new TiltClaw('u'));
+		SmartDashboard.putData("ClawUp", new TiltClaw('u'));
+		SmartDashboard.putData("ClawDown", new TiltClaw('d'));
+		SmartDashboard.putData("DeployClawF", new DeployClaw('f'));
+		SmartDashboard.putData("DeployClawB", new DeployClaw('b'));
 		SmartDashboard.putData("ClawIntake", new CubeClawControl(1.0));
 		SmartDashboard.putData("ClawEject", new CubeClawControl(-1.0));
+		SmartDashboard.putData("ArmUp", new MoveArm('u'));
+		SmartDashboard.putData("Winch", new ControlWinch());
+		SmartDashboard.putData("Climb", new Climb());
+		
+		
+		
 	}
 
 	public Joystick getLeftJoystick() {

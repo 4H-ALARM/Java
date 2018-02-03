@@ -19,7 +19,7 @@ public class Robot extends TimedRobot {
     public static Claw claw;
     public static Arm elevator;
     public static Climb climb;
-
+    private static double AutoTime;
     @Override
     public void robotInit() {
         RobotMap.init();
@@ -28,6 +28,7 @@ public class Robot extends TimedRobot {
         elevator = new Arm();
         climb = new Climb();
         oi = new OI();
+
 
         chooser.addDefault("DriveToLine", new DriveToLine());
         SmartDashboard.putData("Auto mode", chooser);
@@ -45,8 +46,10 @@ public class Robot extends TimedRobot {
 
     @Override
     public void autonomousInit() {
+        AutoTime = SmartDashboard.getNumber("AutoTime", 1000.0);
         autonomousCommand = chooser.getSelected();
         if (autonomousCommand != null) autonomousCommand.start();
+        
     }
 
     @Override
@@ -64,4 +67,7 @@ public class Robot extends TimedRobot {
         Scheduler.getInstance().run();
     }
     
+    public static double getAutoTime(){
+    	return AutoTime;
+    }
 }
