@@ -8,7 +8,7 @@ public class MoveArm extends Command {
 
 	char direction;
 
-    public MoveArm(char direction) {
+    public MoveArm(char direction) { //Allows program to be used for two different directions
     	this.direction=direction;
         requires(Robot.climb);
     }
@@ -20,9 +20,9 @@ public class MoveArm extends Command {
     @Override
     protected void execute() {
     	switch(direction){
-    		case 'u':	RobotMap.dsArmControl.set(Value.kForward); break;
-    		case 'd':	RobotMap.dsArmControl.set(Value.kReverse); break;
-    		default:	RobotMap.dsArmControl.set(Value.kOff);
+    		case 'u':	RobotMap.dsArmControl.set(Value.kForward); break; //If called with 'u' set the cylinder to go forwards
+    		case 'd':	RobotMap.dsArmControl.set(Value.kReverse); break; //If called with 'd' set the cylinder to go backwards
+    		default:	RobotMap.dsArmControl.set(Value.kOff); //Otherwise turn it off
     	}
     }
 
@@ -33,7 +33,7 @@ public class MoveArm extends Command {
 
     @Override
     protected void end() {
-    	RobotMap.dsArmControl.set(Value.kOff);
+    	RobotMap.dsArmControl.set(Value.kOff); //If it ends also turn it off
     }
 
     @Override

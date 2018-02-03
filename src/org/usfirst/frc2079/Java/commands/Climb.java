@@ -9,10 +9,10 @@ public class Climb extends CommandGroup {
 
 	private static boolean armRan = false;
 	public Climb() {
-		if (!armRan){
+		if (!armRan){ //Even if the button is still held, the cylinder in the arm will only be called once to reverse direction
 			addSequential(new MoveArm('d'));
 			armRan = true;
 		}
-		addSequential(new ControlWinch());
+		addSequential(new ControlWinch()); //Winch starts after command before is called
 	}
 }

@@ -17,7 +17,7 @@ public class ControlWinch extends Command{
 
     @Override
     protected void execute() {
-		RobotMap.winch.set(1.0);
+		RobotMap.winch.set(1.0); //While this command is being called turn the winch
     }
 
     @Override
@@ -27,7 +27,7 @@ public class ControlWinch extends Command{
 
     @Override
     protected void end() {
-    	RobotMap.winch.set(0.0);
+    	RobotMap.winch.set(0.0); //Stops the motor when this command isn't called or is interrupted
     }
 
     @Override

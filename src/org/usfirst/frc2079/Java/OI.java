@@ -24,30 +24,31 @@ public class OI {
 		manipJoystick = new Joystick(2);
 		//Claw controls
 			clawIntake = new JoystickButton(manipJoystick, 1);
-			clawIntake.whileHeld(new CubeClawControl(1.0));
+			clawIntake.whileHeld(new CubeClawControl(1.0)); //While trigger is held wheels spin inward
 		
 			clawEject = new JoystickButton(manipJoystick, 2);
-			clawEject.whileHeld(new CubeClawControl(-1.0));
+			clawEject.whileHeld(new CubeClawControl(-1.0)); //While button 2 is held wheels spin outward
 		
 			clawDeployF = new JoystickButton(manipJoystick,3);
-			clawDeployF.whenPressed(new DeployClaw('f'));
+			clawDeployF.whenPressed(new DeployClaw('f')); //When button 3 is pressed claw extends
 			
 			clawDeployB = new JoystickButton(manipJoystick,4);
-			clawDeployB.whenPressed(new DeployClaw('b'));
+			clawDeployB.whenPressed(new DeployClaw('b')); //When button 4 is pressed claw retracts
 			
 			clawFlat = new JoystickButton(manipJoystick, 10);
-			clawFlat.whenPressed(new TiltClaw('u'));
+			clawFlat.whenPressed(new TiltClaw('u')); //When button 10 is pressed claw flattens
 		
 			clawDown = new JoystickButton(manipJoystick, 11);
-			clawDown.whenPressed(new TiltClaw('d'));
+			clawDown.whenPressed(new TiltClaw('d')); //When button 11 is pressed claw tilts down
 			
 		//Lifting/Climbing Controls
 			armUp = new JoystickButton(manipJoystick,5);
-			armUp.whenPressed(new MoveArm('u'));
+			armUp.whenPressed(new MoveArm('u')); //When button 5 is pressed climbing arm swings up
 			
 			climb = new JoystickButton(manipJoystick,6);
-			climb.whenPressed(new Climb());
+			climb.whenPressed(new Climb()); //When button 6 is pressed cylinder retracts and winch motor spins
 
+		//Puts commands into SmartDashboard
 		SmartDashboard.putData("DriveToLine", new DriveToLine());
 		SmartDashboard.putData("DriveWithJoysticks", new DriveWithJoysticks());
 		SmartDashboard.putData("ClawUp", new TiltClaw('u'));

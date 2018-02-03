@@ -18,7 +18,7 @@ public class Claw extends Subsystem {
 
     }
     
-    public void spinWheels(double speed){
+    public void spinWheels(double speed){ //Controls the speed of the claw wheels
     	clawSCG.set(speed);
     }
 }

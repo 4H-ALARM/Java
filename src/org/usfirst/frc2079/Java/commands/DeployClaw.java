@@ -9,7 +9,7 @@ public class DeployClaw extends Command {
 
 	char direction;
 	
-    public DeployClaw(char direction) {
+    public DeployClaw(char direction) { //Allows program to be used for two different directions
     	this.direction=direction;
         requires(Robot.climb);
     }
@@ -21,9 +21,9 @@ public class DeployClaw extends Command {
     @Override
     protected void execute() {
     	switch(direction){
-    		case 'f':	RobotMap.dsClawDeploy.set(Value.kForward); break;
-    		case 'b':	RobotMap.dsClawDeploy.set(Value.kReverse); break;
-    		default:	RobotMap.dsClawDeploy.set(Value.kOff);
+    		case 'f':	RobotMap.dsClawDeploy.set(Value.kForward); break; //If called with 'f' set the cylinder to go forwards
+    		case 'b':	RobotMap.dsClawDeploy.set(Value.kReverse); break; //If called with 'b' set the cylinder to go backwards
+    		default:	RobotMap.dsClawDeploy.set(Value.kOff); //Otherwise turn it off
     	}
     }
 
@@ -34,7 +34,7 @@ public class DeployClaw extends Command {
 
     @Override
     protected void end() {
-    	RobotMap.dsClawDeploy.set(Value.kOff);
+    	RobotMap.dsClawDeploy.set(Value.kOff); //If it ends also turn it off
     }
 
     @Override
