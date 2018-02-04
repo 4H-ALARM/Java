@@ -7,7 +7,7 @@ import org.usfirst.frc2079.Java.RobotMap;
 public class CubeClawControl extends Command {
 
 	private double s;
-	public CubeClawControl(double speed) {
+	public CubeClawControl(double speed) { //Allows this command to be used for both intake and ejection
 		s = speed;
 		requires(Robot.claw);
 	}
@@ -26,7 +26,7 @@ public class CubeClawControl extends Command {
 
 	@Override
 	protected boolean isFinished() {
-		if (s < 0) {
+		if (s < 0) { //If the claw is ejecting the cube the program won't stop even if the limit switch is held
 			return false;
 		}
 		return limitHit();
@@ -34,7 +34,7 @@ public class CubeClawControl extends Command {
 
 	@Override
 	protected void end() {
-		Robot.claw.spinWheels(0.0);
+		Robot.claw.spinWheels(0.0); //Stops wheels when program is ended
 	}
 
 	@Override

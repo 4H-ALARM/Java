@@ -30,7 +30,7 @@ public class Robot extends TimedRobot {
         oi = new OI();
 
 
-        chooser.addDefault("DriveToLine", new DriveToLine());
+        chooser.addDefault("DriveToLine", new DriveToLine()); //Autonomous command set to DriveToLine
         SmartDashboard.putData("Auto mode", chooser);
     }
 
@@ -46,7 +46,7 @@ public class Robot extends TimedRobot {
 
     @Override
     public void autonomousInit() {
-        AutoTime = SmartDashboard.getNumber("AutoTime", 1000.0);
+        AutoTime = SmartDashboard.getNumber("AutoTime", 1000.0); //Autonomous timer pulled from SmartDashboard
         autonomousCommand = chooser.getSelected();
         if (autonomousCommand != null) autonomousCommand.start();
         

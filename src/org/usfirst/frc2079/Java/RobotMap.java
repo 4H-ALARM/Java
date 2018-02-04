@@ -41,6 +41,7 @@ public class RobotMap {
     
     @SuppressWarnings("deprecation")
 	public static void init() {
+    	//Drive Train initializations
     	dtSpark1 = new Spark(0);
         LiveWindow.addActuator("DriveTrain", "Spark1", (Spark) dtSpark1);
         dtSpark1.setInverted(false);
@@ -53,25 +54,28 @@ public class RobotMap {
         dtSpark4 = new Spark(3);
         LiveWindow.addActuator("DriveTrain", "Spark2", (Spark) dtSpark4);
         dtSpark4.setInverted(false);
-        dtSCG1 = new SpeedControllerGroup(dtSpark1,dtSpark2);
-        dtSCG2 = new SpeedControllerGroup(dtSpark3,dtSpark4);		
-        dtDrive = new DifferentialDrive(dtSCG1,dtSCG2);
+        dtSCG1 = new SpeedControllerGroup(dtSpark1,dtSpark2);//Left side of robot
+        dtSCG2 = new SpeedControllerGroup(dtSpark3,dtSpark4);//Right side of robot		
+        dtDrive = new DifferentialDrive(dtSCG1,dtSCG2); //Left+Right side of the robot controlled by tank drive controls
         
         dtDrive.setSafetyEnabled(true);
         dtDrive.setExpiration(0.1);
         dtDrive.setMaxOutput(1.0);
 
+        //Claw initializations
         clawLeft = new Spark(4);
         clawLeft.setInverted(false);   
         LiveWindow.addActuator("Claw", "Spark4", (Spark) clawLeft);
         clawRight = new Spark(5);
         clawRight.setInverted(false);
         LiveWindow.addActuator("Claw", "Spark5", (Spark) clawRight);
-        clawSCG = new SpeedControllerGroup(clawLeft, clawRight);
+        clawSCG = new SpeedControllerGroup(clawLeft, clawRight); //Both claw motors controlled by one command
         
+        //Winch initialization
         winch = new Spark(6);
         LiveWindow.addActuator("Winch", "Spark6", (Spark) winch);
         
+        //Pneumatics initializations
         compressor = new Compressor(1);
         LiveWindow.addActuator("Pneumatics", "Compressor 1", compressor);
         dsClawLift = new DoubleSolenoid(1, 0, 1);
@@ -81,6 +85,7 @@ public class RobotMap {
         dsArmControl = new DoubleSolenoid(1,4,5);
         LiveWindow.addActuator("Pneumatics", "Double Solenoid 1", dsArmControl);
         
+        //Limit switch initialization
         intakeLimit = new DigitalInput(3);
     }
 }
