@@ -20,9 +20,9 @@ public class TiltClaw extends Command {
     @Override
     protected void execute() {
     	switch(direction){
-    		case 'u':	RobotMap.dsClawLift.set(Value.kForward); break; //If called with 'u' set the cylinder to go forwards
-    		case 'd':	RobotMap.dsClawLift.set(Value.kReverse); break; //If called with 'd' set the cylinder to go backwards
-    		default:	RobotMap.dsClawLift.set(Value.kOff); //Otherwise turn it off
+    		case 'u':	RobotMap.dsClawTilt.set(Value.kForward); break; //If called with 'u' set the cylinder to go forwards
+    		case 'd':	RobotMap.dsClawTilt.set(Value.kReverse); break; //If called with 'd' set the cylinder to go backwards
+    		default:	RobotMap.dsClawTilt.set(Value.kOff); //Otherwise turn it off
     	}
     }
 
@@ -33,7 +33,7 @@ public class TiltClaw extends Command {
 
     @Override
     protected void end() {
-    	RobotMap.dsClawLift.set(Value.kOff); //If it ends also turn it off
+    	RobotMap.dsClawTilt.set(Value.kOff); //If it ends also turn it off
     }
 
     @Override

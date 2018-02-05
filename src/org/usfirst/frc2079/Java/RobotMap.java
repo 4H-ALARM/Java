@@ -31,9 +31,9 @@ public class RobotMap {
     public static SpeedController winch;
     
     public static Compressor compressor;
-    public static DoubleSolenoid dsClawLift;
-    public static DoubleSolenoid dsClawDeploy;
-    public static DoubleSolenoid dsArmControl;
+    public static DoubleSolenoid dsClawTilt;
+    public static Solenoid dsClawDeploy;
+    public static Solenoid dsArmControl;
     
     
     public static DigitalInput intakeLimit;
@@ -78,11 +78,11 @@ public class RobotMap {
         //Pneumatics initializations
         compressor = new Compressor(1);
         LiveWindow.addActuator("Pneumatics", "Compressor 1", compressor);
-        dsClawLift = new DoubleSolenoid(1, 0, 1);
-        LiveWindow.addActuator("Pneumatics", "Double Solenoid 1", dsClawLift);
-        dsClawDeploy = new DoubleSolenoid(1, 2, 3);
-        LiveWindow.addActuator("Pneumatics", "Double Solenoid 1", dsClawDeploy);
-        dsArmControl = new DoubleSolenoid(1,4,5);
+        dsClawTilt = new DoubleSolenoid(1, 0, 1);
+        LiveWindow.addActuator("Pneumatics", "Solenoid 1", dsClawTilt);
+        dsClawDeploy = new Solenoid(1);
+        LiveWindow.addActuator("Pneumatics", "Solenoid 1", dsClawDeploy);
+        dsArmControl = new Solenoid(2);
         LiveWindow.addActuator("Pneumatics", "Double Solenoid 1", dsArmControl);
         
         //Limit switch initialization

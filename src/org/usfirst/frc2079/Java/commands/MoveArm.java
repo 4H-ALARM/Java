@@ -1,5 +1,4 @@
 package org.usfirst.frc2079.Java.commands;
-import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc2079.Java.Robot;
 import org.usfirst.frc2079.Java.RobotMap;
@@ -19,11 +18,7 @@ public class MoveArm extends Command {
 
     @Override
     protected void execute() {
-    	switch(direction){
-    		case 'u':	RobotMap.dsArmControl.set(Value.kForward); break; //If called with 'u' set the cylinder to go forwards
-    		case 'd':	RobotMap.dsArmControl.set(Value.kReverse); break; //If called with 'd' set the cylinder to go backwards
-    		default:	RobotMap.dsArmControl.set(Value.kOff); //Otherwise turn it off
-    	}
+    	RobotMap.dsArmControl.set(true); // Turns the solenoid on.
     }
 
     @Override
@@ -33,7 +28,7 @@ public class MoveArm extends Command {
 
     @Override
     protected void end() {
-    	RobotMap.dsArmControl.set(Value.kOff); //If it ends also turn it off
+    	RobotMap.dsArmControl.set(false); // Turns the solenoid off.
     }
 
     @Override
