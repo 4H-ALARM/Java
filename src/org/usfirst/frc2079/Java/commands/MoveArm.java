@@ -5,10 +5,7 @@ import org.usfirst.frc2079.Java.RobotMap;
 
 public class MoveArm extends Command {
 
-	char direction;
-
-    public MoveArm(char direction) { //Allows program to be used for two different directions
-    	this.direction=direction;
+    public MoveArm() { //Allows program to be used for two different directions
         requires(Robot.climb);
     }
     
@@ -18,7 +15,7 @@ public class MoveArm extends Command {
 
     @Override
     protected void execute() {
-    	RobotMap.dsArmControl.set(true); // Turns the solenoid on.
+    	RobotMap.sArmControl.set(true); // Turns the solenoid on.
     }
 
     @Override
@@ -28,7 +25,7 @@ public class MoveArm extends Command {
 
     @Override
     protected void end() {
-    	RobotMap.dsArmControl.set(false); // Turns the solenoid off.
+    	RobotMap.sArmControl.set(false); // Turns the solenoid off.
     }
 
     @Override

@@ -11,7 +11,7 @@ public class Climb extends Subsystem {
 
     private final Compressor compressor = RobotMap.compressor;
     private final DoubleSolenoid dsClawLift = RobotMap.dsClawTilt;
-    private final Solenoid dsClawDeploy = RobotMap.dsClawDeploy;
+    private final Solenoid dsClawDeploy = RobotMap.sClawDeploy;
 
     @Override
     public void initDefaultCommand() {
