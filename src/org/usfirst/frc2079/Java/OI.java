@@ -45,8 +45,8 @@ public class OI {
 			armUp = new JoystickButton(manipJoystick, 7);
 			armUp.toggleWhenPressed(new MoveArm());; //When button 5 is pressed climbing arm swings up
 			
-			// climb = new JoystickButton(manipJoystick,6);
-			// climb.whenPressed(new ControlWinch()); //When button 6 is pressed cylinder retracts and winch motor spins
+			climb = new JoystickButton(manipJoystick,6);
+			climb.whenPressed(new ControlWinch()); //When button 6 is pressed cylinder retracts and winch motor spins
 
 		//Puts commands into SmartDashboard
 		SmartDashboard.putData("DriveToLine", new DriveToLine());
@@ -60,6 +60,7 @@ public class OI {
 		SmartDashboard.putData("ArmUp", new MoveArm());
 		SmartDashboard.putData("Winch", new ControlWinch());
 		SmartDashboard.putData("Climb", new ClimbRobot());
+		
 		/* @SuppressWarning("FBI")
 		 * 	protected static void deleteHerobrine(){
 		 * 		minecraft.delete("herobrine")
