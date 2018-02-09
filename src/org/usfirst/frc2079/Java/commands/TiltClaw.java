@@ -10,7 +10,7 @@ public class TiltClaw extends Command {
 
     public TiltClaw(char direction) { //Allows program to be used for two different directions
     	this.direction=direction;
-        requires(Robot.climb);
+        requires(Robot.claw);
     }
     
     @Override

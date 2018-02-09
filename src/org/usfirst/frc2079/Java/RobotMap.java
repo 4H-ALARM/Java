@@ -81,12 +81,14 @@ public class RobotMap {
         LiveWindow.addActuator("Pneumatics", "Compressor 1", compressor);
         dsClawTilt = new DoubleSolenoid(1, 0, 1);
         LiveWindow.addActuator("Pneumatics", "Solenoid 1", dsClawTilt);
-        sClawDeploy = new Solenoid(1);
+        sClawDeploy = new Solenoid(1,3);
         LiveWindow.addActuator("Pneumatics", "Solenoid 1", sClawDeploy);
-        sArmControl = new Solenoid(2);
+        sArmControl = new Solenoid(1,2);
         LiveWindow.addActuator("Pneumatics", "Double Solenoid 1", sArmControl);
         
         //Limit switch initialization
-        intakeLimit = new DigitalInput(3);
+        intakeLimit = new DigitalInput(4);
+        
+        
     }
 }

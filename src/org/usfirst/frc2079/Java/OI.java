@@ -42,11 +42,13 @@ public class OI {
 			clawDown.whileHeld(new TiltClaw('d')); //When button 11 is pressed claw tilts down
 			
 		//Lifting/Climbing Controls
-			armUp = new JoystickButton(manipJoystick, 7);
-			armUp.toggleWhenPressed(new MoveArm());; //When button 5 is pressed climbing arm swings up
 			
 			climb = new JoystickButton(manipJoystick,6);
 			climb.whenPressed(new ControlWinch()); //When button 6 is pressed cylinder retracts and winch motor spins
+			
+			armUp = new JoystickButton(manipJoystick, 7);
+			armUp.toggleWhenPressed(new MoveArm()); //When button 5 is pressed climbing arm swings up
+
 
 		//Puts commands into SmartDashboard
 		SmartDashboard.putData("DriveToLine", new DriveToLine());
@@ -59,7 +61,6 @@ public class OI {
 		SmartDashboard.putData("ClawEject", new CubeClawControl(-1.0));
 		SmartDashboard.putData("ArmUp", new MoveArm());
 		SmartDashboard.putData("Winch", new ControlWinch());
-		SmartDashboard.putData("Climb", new ClimbRobot());
 		
 		/* @SuppressWarning("FBI")
 		 * 	protected static void deleteHerobrine(){
