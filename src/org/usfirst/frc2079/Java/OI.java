@@ -42,7 +42,7 @@ public class OI {
 			clawDown.whileHeld(new TiltClaw('d')); //When button 11 is pressed claw tilts down
 			
 		//Lifting/Climbing Controls
-			//Test
+			
 			climb = new JoystickButton(manipJoystick,6);
 			climb.whileHeld(new ControlWinch()); //When button 6 is pressed cylinder retracts and winch motor spins
 			
