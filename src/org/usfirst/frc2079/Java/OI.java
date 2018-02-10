@@ -44,7 +44,7 @@ public class OI {
 		//Lifting/Climbing Controls
 			
 			climb = new JoystickButton(manipJoystick,6);
-			climb.whenPressed(new ControlWinch()); //When button 6 is pressed cylinder retracts and winch motor spins
+			climb.whileHeld(new ControlWinch()); //When button 6 is pressed cylinder retracts and winch motor spins
 			
 			armUp = new JoystickButton(manipJoystick, 7);
 			armUp.toggleWhenPressed(new MoveArm()); //When button 5 is pressed climbing arm swings up
