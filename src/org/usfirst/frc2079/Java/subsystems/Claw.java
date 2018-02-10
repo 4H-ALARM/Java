@@ -2,6 +2,7 @@ package org.usfirst.frc2079.Java.subsystems;
 
 import org.usfirst.frc2079.Java.RobotMap;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 
 public class Claw extends Subsystem {
