@@ -17,7 +17,7 @@ public class Robot extends TimedRobot {
     public static OI oi;
     public static DriveTrain driveTrain;
     public static Claw claw;
-    public static Arm elevator;
+    public static Arm arm;
     public static Climb climb;
     private static double AutoTime;
     @Override
@@ -25,7 +25,7 @@ public class Robot extends TimedRobot {
         RobotMap.init();
         driveTrain = new DriveTrain();
         claw = new Claw();
-        elevator = new Arm();
+        arm = new Arm();
         climb = new Climb();
         oi = new OI();
 
