@@ -18,7 +18,9 @@ public class ControlWinch extends Command{
 
     @Override
     protected void execute() {
-		RobotMap.winch.set(1.0); //While this command is being called turn the winch
+    	if(!MoveArm.armEnabled){
+    		RobotMap.winch.set(1.0); //While this command is being called turn the winch
+    	}
     }
 
     @Override
