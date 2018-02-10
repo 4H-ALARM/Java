@@ -1,17 +1,13 @@
 package org.usfirst.frc2079.Java.commands;
 
-import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc2079.Java.Robot;
 import org.usfirst.frc2079.Java.RobotMap;
 
 public class DeployClaw extends Command {
-
-	char direction;
 	
-    public DeployClaw(char direction) { //Allows program to be used for two different directions
-    	this.direction=direction;
-        requires(Robot.climb);
+    public DeployClaw() { //Allows program to be used for two different directions
+        requires(Robot.claw);
     }
     
     @Override
@@ -20,11 +16,7 @@ public class DeployClaw extends Command {
 
     @Override
     protected void execute() {
-    	switch(direction){
-    		case 'f':	RobotMap.dsClawDeploy.set(Value.kForward); break; //If called with 'f' set the cylinder to go forwards
-    		case 'b':	RobotMap.dsClawDeploy.set(Value.kReverse); break; //If called with 'b' set the cylinder to go backwards
-    		default:	RobotMap.dsClawDeploy.set(Value.kOff); //Otherwise turn it off
-    	}
+    	RobotMap.sClawDeploy.set(true);; // Turns the solenoid on.
     }
 
     @Override
@@ -34,7 +26,7 @@ public class DeployClaw extends Command {
 
     @Override
     protected void end() {
-    	RobotMap.dsClawDeploy.set(Value.kOff); //If it ends also turn it off
+    	RobotMap.sClawDeploy.set(false);; // Turns the solenoid off.
     }
 
     @Override

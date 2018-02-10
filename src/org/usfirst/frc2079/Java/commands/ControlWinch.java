@@ -1,5 +1,6 @@
 package org.usfirst.frc2079.Java.commands;
 
+import org.usfirst.frc2079.Java.Robot;
 import org.usfirst.frc2079.Java.RobotMap;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
@@ -8,7 +9,7 @@ import edu.wpi.first.wpilibj.command.Command;
 public class ControlWinch extends Command{
 	
 	public ControlWinch(){
-		
+		requires(Robot.climb);
 	}
 	
 	@Override
