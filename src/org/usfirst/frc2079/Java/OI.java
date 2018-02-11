@@ -18,10 +18,12 @@ public class OI {
 	public Joystick manipJoystick;
 	public Joystick driveJoystickL;
 	public Joystick driveJoystickR;
+	public Joystick xboxController;
 
 	public OI() {
-		driveJoystickL = new Joystick(0);
-		driveJoystickR = new Joystick(1);
+		//driveJoystickL = new Joystick(0);
+		//driveJoystickR = new Joystick(1);
+		xboxController = new Joystick(3);
 		manipJoystick = new Joystick(2);
 		// Claw controls
 		clawIntake = new JoystickButton(manipJoystick, 1);
@@ -66,10 +68,13 @@ public class OI {
 		SmartDashboard.putData("ArmUp", new MoveArm());
 		SmartDashboard.putData("Winch", new ControlWinch());
 
-		/*
-		 * @SuppressWarning("FBI") protected static void deleteHerobrine(){
-		 * minecraft.delete("herobrine") }
-		 */
+		
+		//protected static void deleteHerobrine(){
+			// minecraft.delete("herobrine") 
+			 //}
+		
+		//System.out.print("effective. Power");
+		
 
 	}
 
