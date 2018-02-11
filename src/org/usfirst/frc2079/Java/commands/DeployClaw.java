@@ -7,7 +7,7 @@ import org.usfirst.frc2079.Java.RobotMap;
 public class DeployClaw extends Command {
 	
     public DeployClaw() { //Allows program to be used for two different directions
-        requires(Robot.claw);
+        //requires(Robot.claw);
     }
     
     @Override
