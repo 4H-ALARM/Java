@@ -26,8 +26,8 @@ public class DriveTrain extends Subsystem {
 
     }
 
-    public void drive(Joystick controller){ //Control the left side with the left joystick and the the right side with the right joystick
-    	motors.tankDrive(-controller.getRawAxis(1), -controller.getRawAxis(5));
+    public void drive(Joystick controller/*L, Joystick controllerR*/){ //Control the left side with the left joystick and the the right side with the right joystick
+    	motors.tankDrive(-Math.pow(controller.getRawAxis(1), 3),-Math.pow(controller.getRawAxis(5), 3)/*, -Math.pow(controllerR.getY(),3)*/);
     }
     
     public void stop(){ //Stops motors
