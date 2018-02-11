@@ -28,6 +28,7 @@ public class RobotMap {
     public static Victor clawLeft;
     public static Victor clawRight;
     public static SpeedControllerGroup clawSCG;
+
     
     public static SpeedController winch;
     
@@ -70,6 +71,7 @@ public class RobotMap {
         clawRight = new Victor(9);
         clawRight.setInverted(false);
         LiveWindow.addActuator("Claw", "VictorR", clawRight);
+ 
         clawSCG = new SpeedControllerGroup(clawLeft, clawRight); //Both claw motors controlled by one command
         
         //Winch initialization
