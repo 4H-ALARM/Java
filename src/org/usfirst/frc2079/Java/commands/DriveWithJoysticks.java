@@ -17,7 +17,7 @@ public class DriveWithJoysticks extends Command {
 
     @Override
     protected void execute() {
-    	Robot.driveTrain.drive(Robot.oi.m_xboxController); //Control drive train with xbox controller
+    	Robot.driveTrain.drive(Robot.oi.xboxController/*driveJoystickL, Robot.oi.driveJoystickR*/); //Control drive train with xbox controller
     }
 
     @Override

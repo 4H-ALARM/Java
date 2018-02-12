@@ -29,9 +29,9 @@ public class Robot extends TimedRobot {
         climb = new Climb();
         oi = new OI();
 
-
-        chooser.addDefault("DriveToLine", new DriveToLine()); //Autonomous command set to DriveToLine
-        SmartDashboard.putData("Auto mode", chooser);
+        autonomousCommand = new DriveToLine();
+        //chooser.addDefault("DriveToLine", new DriveToLine()); //Autonomous command set to DriveToLine
+        //SmartDashboard.putData("Auto mode", chooser);
     }
 
     @Override
@@ -46,8 +46,7 @@ public class Robot extends TimedRobot {
 
     @Override
     public void autonomousInit() {
-        AutoTime = SmartDashboard.getNumber("AutoTime", 1000.0); //Autonomous timer pulled from SmartDashboard
-        autonomousCommand = chooser.getSelected();
+        AutoTime = SmartDashboard.getNumber("AutoTime", 4000.0); //Autonomous timer pulled from SmartDashboard
         if (autonomousCommand != null) autonomousCommand.start();
         
     }
@@ -65,6 +64,7 @@ public class Robot extends TimedRobot {
     @Override
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
+
     }
     
     public static double getAutoTime(){

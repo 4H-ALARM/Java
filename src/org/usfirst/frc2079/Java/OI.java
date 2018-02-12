@@ -16,10 +16,17 @@ public class OI {
 	public JoystickButton armDown;
 	public JoystickButton climb;
 	public Joystick manipJoystick;
-	public Joystick m_xboxController;
+	public Joystick driveJoystickL;
+	public Joystick driveJoystickR;
+	public Joystick xboxController;
+
+	public JoystickButton winchOut1;
+	public JoystickButton winchOut2;
 
 	public OI() {
-		m_xboxController = new Joystick(1);
+		// driveJoystickL = new Joystick(0);
+		// driveJoystickR = new Joystick(1);
+		xboxController = new Joystick(3);
 		manipJoystick = new Joystick(2);
 		// Claw controls
 		clawIntake = new JoystickButton(manipJoystick, 1);
@@ -31,25 +38,30 @@ public class OI {
 														// held wheels spin
 														// outward
 
-		clawDeploy = new JoystickButton(manipJoystick, 10);
+		clawDeploy = new JoystickButton(manipJoystick, 4);
 		clawDeploy.toggleWhenPressed(new DeployClaw()); // When button 3 is
 														// pressed claw extends
 
-		clawFlat = new JoystickButton(manipJoystick, 4);
+		clawFlat = new JoystickButton(manipJoystick, 5);
 		clawFlat.whileHeld(new TiltClaw('u')); // When button 10 is pressed claw
 												// flattens
 
-		clawDown = new JoystickButton(manipJoystick, 5);
+		clawDown = new JoystickButton(manipJoystick, 3);
 		clawDown.whileHeld(new TiltClaw('d')); // When button 11 is pressed claw
 												// tilts down
 
 		// Lifting/Climbing Controls
-		climb = new JoystickButton(manipJoystick, 6);
-		climb.whileHeld(new ControlWinch()); // When button 6 is pressed
+		climb = new JoystickButton(manipJoystick, 11);
+		climb.whileHeld(new ControlWinch(1.0)); // When button 6 is pressed
 												// cylinder retracts and winch
 												// motor spins
 
-		armUp = new JoystickButton(manipJoystick, 7);
+		winchOut1 = new JoystickButton(manipJoystick, 7);
+		winchOut2 = new JoystickButton(manipJoystick, 12);
+
+		winchOut2.whileHeld(new ControlWinch(-1));
+
+		armUp = new JoystickButton(manipJoystick, 9);
 		armUp.toggleWhenPressed(new MoveArm()); // When button 5 is pressed
 												// climbing arm swings up
 
@@ -62,12 +74,13 @@ public class OI {
 		SmartDashboard.putData("ClawIntake", new CubeClawControl(1.0));
 		SmartDashboard.putData("ClawEject", new CubeClawControl(-1.0));
 		SmartDashboard.putData("ArmUp", new MoveArm());
-		SmartDashboard.putData("Winch", new ControlWinch());
+		SmartDashboard.putData("Winch", new ControlWinch(1));
 
-		/*
-		 * @SuppressWarning("FBI") protected static void deleteHerobrine(){
-		 * minecraft.delete("herobrine") }
-		 */
+		// protected static void deleteHerobrine(){
+		// minecraft.delete("herobrine")
+		// }
+
+		// System.out.print("effective. Power");
 
 	}
 

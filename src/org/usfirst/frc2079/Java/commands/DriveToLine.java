@@ -12,7 +12,7 @@ public class DriveToLine extends Command {
 	private double t;
 	public DriveToLine() {
 
-		requires(Robot.driveTrain);
+		//requires(Robot.driveTrain);
 
 	}
 
