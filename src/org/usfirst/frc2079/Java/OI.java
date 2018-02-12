@@ -20,9 +20,12 @@ public class OI {
 	public Joystick driveJoystickR;
 	public Joystick xboxController;
 
+	public JoystickButton winchOut1;
+	public JoystickButton winchOut2;
+
 	public OI() {
-		//driveJoystickL = new Joystick(0);
-		//driveJoystickR = new Joystick(1);
+		// driveJoystickL = new Joystick(0);
+		// driveJoystickR = new Joystick(1);
 		xboxController = new Joystick(3);
 		manipJoystick = new Joystick(2);
 		// Claw controls
@@ -49,9 +52,14 @@ public class OI {
 
 		// Lifting/Climbing Controls
 		climb = new JoystickButton(manipJoystick, 11);
-		climb.whileHeld(new ControlWinch()); // When button 6 is pressed
+		climb.whileHeld(new ControlWinch(1.0)); // When button 6 is pressed
 												// cylinder retracts and winch
 												// motor spins
+
+		winchOut1 = new JoystickButton(manipJoystick, 7);
+		winchOut2 = new JoystickButton(manipJoystick, 12);
+
+		winchOut2.whileHeld(new ControlWinch(-1));
 
 		armUp = new JoystickButton(manipJoystick, 9);
 		armUp.toggleWhenPressed(new MoveArm()); // When button 5 is pressed
@@ -66,15 +74,13 @@ public class OI {
 		SmartDashboard.putData("ClawIntake", new CubeClawControl(1.0));
 		SmartDashboard.putData("ClawEject", new CubeClawControl(-1.0));
 		SmartDashboard.putData("ArmUp", new MoveArm());
-		SmartDashboard.putData("Winch", new ControlWinch());
+		SmartDashboard.putData("Winch", new ControlWinch(1));
 
-		
-		//protected static void deleteHerobrine(){
-			// minecraft.delete("herobrine") 
-			 //}
-		
-		//System.out.print("effective. Power");
-		
+		// protected static void deleteHerobrine(){
+		// minecraft.delete("herobrine")
+		// }
+
+		// System.out.print("effective. Power");
 
 	}
 
