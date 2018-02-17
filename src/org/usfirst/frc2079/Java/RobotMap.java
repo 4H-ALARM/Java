@@ -1,6 +1,9 @@
 package org.usfirst.frc2079.Java;
 
 
+import org.usfirst.frc2079.Java.commands.ReadPressure;
+
+import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
@@ -39,6 +42,8 @@ public class RobotMap {
     
     
     public static DigitalInput intakeLimit;
+    
+    public static AnalogInput ai;
     //public static PowerDistributionPanel pdp;
     
     @SuppressWarnings("deprecation")
@@ -91,6 +96,7 @@ public class RobotMap {
         //Limit switch initialization
         intakeLimit = new DigitalInput(4);
         
-        
+        // Analogue Input initialization 
+        ai = new AnalogInput(0);
     }
 }
