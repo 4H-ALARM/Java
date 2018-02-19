@@ -21,7 +21,7 @@ public class Robot extends TimedRobot {
     public static Claw claw;
     public static Arm arm;
     public static Climb climb;
-    public static AnalogInput pGuage;
+    public static AnalogInput pGauge;
     public static AnalogInput sonar;
     
     private static double AutoTime;
@@ -35,7 +35,7 @@ public class Robot extends TimedRobot {
         arm = new Arm();
         climb = new Climb();
         oi = new OI();
-        pGuage = new AnalogInput(1);
+        pGauge = new AnalogInput(1);
         sonar = new AnalogInput(3);
         
         CameraServer.getInstance().startAutomaticCapture();
@@ -86,20 +86,21 @@ public class Robot extends TimedRobot {
     }
         
     private void reportPressure() { //report to dash board if pressure is good
-    	double p = pGuage.getAverageVoltage(); 
+    	double p = pGauge.getAverageVoltage(); 
     	
         if (p > 2.5) {
         	// pressure good message to dash board
-        	SmartDashboard.putBoolean("atPressure", true);
+        	SmartDashboard.putBoolean(" atPressure", true);
         }
         else {
         	// pressure low message to dash board
-        	SmartDashboard.putBoolean("atPressure", false);
+        	SmartDashboard.putBoolean(" atPressure", false);
         }
    }
     private void reportSonar() {
     	double h = sonar.getAverageVoltage();
     	SmartDashboard.putNumber("sonarDistance", h);
     }
+
 
 }
