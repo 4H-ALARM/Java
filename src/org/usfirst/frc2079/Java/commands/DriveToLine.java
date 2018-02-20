@@ -8,35 +8,25 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class DriveToLine extends Command {
 
-	private static boolean isSpeedSet;
 	private long start;
 	private double t;
 
 	public DriveToLine() {
-
 		// requires(Robot.driveTrain);
-
 	}
 
 	@Override
 	protected void initialize() {
-		isSpeedSet = false;
 		start = System.currentTimeMillis(); // Gets the current time in milliseconds
-		System.out.println("Time started at:" + start);
-		// t = Robot.getAutoTime(); //Gets the time length the robot should drive for in
-		// milliseconds
-		t = 4000;
-		System.out.println("t: " + t);
+		// t = Robot.getAutoTime(); //Gets the time length the robot should drive for in milliseconds
+		t = 2000;
 	}
 
 	@Override
 
 	protected void execute() {
-	// 	if (!isSpeedSet) {
-			isSpeedSet = true;
-			RobotMap.dtSCG1.set(1.0);
+			RobotMap.dtSCG1.set(0.8);  //
 			RobotMap.dtSCG2.set(-1.0); // Robot starts driving
-	//	}
 	}
 
 	@Override

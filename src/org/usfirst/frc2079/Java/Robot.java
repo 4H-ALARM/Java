@@ -35,14 +35,12 @@ public class Robot extends TimedRobot {
         arm = new Arm();
         climb = new Climb();
         oi = new OI();
-        pGauge = new AnalogInput(1);
-        sonar = new AnalogInput(3);
+        pGauge = new AnalogInput(1); //Pressure reading for analog channel 1
+        sonar = new AnalogInput(3); //Sonar for analog channel 3
         
         CameraServer.getInstance().startAutomaticCapture();
         autonomousCommand = new DriveToLine();
         
-        //chooser.addDefault("DriveToLine", new DriveToLine()); //Autonomous command set to DriveToLine
-        //SmartDashboard.putData("Auto mode", chooser);
     }
 
     @Override

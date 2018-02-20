@@ -17,8 +17,6 @@ public class DriveTrain extends Subsystem {
     	
         setDefaultCommand(new DriveWithJoysticks());
 
-        // Set the default command for a subsystem here.
-        // setDefaultCommand(new MySpecialCommand());
     }
 
     @Override
@@ -33,7 +31,7 @@ public class DriveTrain extends Subsystem {
     	} else {
     		mult= 1;
     	}
-    	motors.tankDrive(-(Math.pow(controller.getRawAxis(1), 3)*mult),-(Math.pow(controller.getRawAxis(5), 3)*mult)/*, -Math.pow(controllerR.getY(),3)*/);
+    	motors.tankDrive(-(Math.pow(controller.getRawAxis(1), 3)*mult),-(Math.pow(controller.getRawAxis(5), 3)*mult)); //Puts values on cubic function to throttle speed. Also halves speed unless both triggers are held
     }
     
     public void stop(){ //Stops motors

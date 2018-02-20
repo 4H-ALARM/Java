@@ -6,10 +6,10 @@ import org.usfirst.frc2079.Java.RobotMap;
 
 public class TiltClaw extends Command {
 
-	char direction;
+	int direction;
 
-    public TiltClaw(char direction) { //Allows program to be used for two different directions
-    	this.direction=direction;
+    public TiltClaw(int d) { //Allows program to be used for two different directions
+    	direction = d;
         //requires(Robot.claw);
     }
     
@@ -20,8 +20,8 @@ public class TiltClaw extends Command {
     @Override
     protected void execute() {
     	switch(direction){
-    		case 'u':	RobotMap.dsClawTilt.set(Value.kForward); break; //If called with 'u' set the cylinder to go forwards
-    		case 'd':	RobotMap.dsClawTilt.set(Value.kReverse); break; //If called with 'd' set the cylinder to go backwards
+    		case 1:	RobotMap.dsClawTilt.set(Value.kForward); break; //If called with 1 set the cylinder to go forwards
+    		case -1:	RobotMap.dsClawTilt.set(Value.kReverse); break; //If called with -1 set the cylinder to go backwards
     		default:	RobotMap.dsClawTilt.set(Value.kOff); //Otherwise turn it off
     	}
     }

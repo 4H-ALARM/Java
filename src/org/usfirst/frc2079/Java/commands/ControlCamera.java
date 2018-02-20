@@ -6,7 +6,7 @@ import org.usfirst.frc2079.Java.Robot;
 import org.usfirst.frc2079.Java.RobotMap;
 
 public class ControlCamera extends Command {
-    public ControlCamera() { //Allows program to be used for two different directions
+    public ControlCamera() {
     }
     
     @Override
@@ -15,8 +15,7 @@ public class ControlCamera extends Command {
 
     @Override
     protected void execute() {
-    	RobotMap.camera.set((Robot.oi.manipJoystick.getRawAxis(3)+1)*0.5);
-    	SmartDashboard.putNumber("Angle", RobotMap.camera.getAngle());
+    	RobotMap.camera.set((Robot.oi.getManipAxis(3)+1)*0.5); //Axis is typically with range of -1.0 to 1.0, so it is adjusted for a range of 0.0 to 1.0
     }
 
     @Override

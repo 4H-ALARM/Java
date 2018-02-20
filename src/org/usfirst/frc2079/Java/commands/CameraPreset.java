@@ -4,7 +4,7 @@ import org.usfirst.frc2079.Java.Robot;
 import org.usfirst.frc2079.Java.RobotMap;
 
 public class CameraPreset extends Command {
-    public CameraPreset() { //Allows program to be used for two different directions
+    public CameraPreset() {
     }
     
     @Override
@@ -13,12 +13,12 @@ public class CameraPreset extends Command {
 
     @Override
     protected void execute() {
-    	RobotMap.camera.setAngle(150);
+    	RobotMap.camera.setAngle(150); //Cube sight preset
     }
 
     @Override
     protected void end() {
-    	RobotMap.camera.setAngle(30);
+    	RobotMap.camera.setAngle(30); //Climb sight preset
     }
 
 	@Override
