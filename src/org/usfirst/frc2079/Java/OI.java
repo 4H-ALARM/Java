@@ -51,7 +51,7 @@ public class OI {
 		climb.whileHeld(new ControlWinch(1.0)); // When button 6 is pressed cylinder retracts and winch motor spins
 
 		winchOut1 = new JoystickButton(manipJoystick, 7);
-		winchOut2 = new JoystickButton(manipJoystick, 12);
+		winchOut2 = new JoystickButton(manipJoystick, 6);
 
 		winchOut2.whileHeld(new ControlWinch(-1));
 
@@ -59,11 +59,11 @@ public class OI {
 		armUp.toggleWhenPressed(new MoveArm()); // When button 5 is pressed climbing arm swings up
 
 		// Camera
-		cameraControl = new JoystickButton(manipJoystick, 8);
+		cameraControl = new JoystickButton(manipJoystick, 10);
 		cameraControl.toggleWhenPressed(new ControlCamera());
 
-		cameraPreset = new JoystickButton(manipJoystick, 10);
-		cameraPreset.toggleWhenPressed(new CameraPreset());
+		cameraPreset = new JoystickButton(manipJoystick, 12);
+		
 
 		// Puts commands into SmartDashboard
 		SmartDashboard.putData("DriveToLine", new DriveToLine());
@@ -90,6 +90,10 @@ public class OI {
 	
 	public boolean reverseWinch() {
 		return winchOut1.get();
+	}
+	
+	public boolean cameraPresetPressed() {
+		return cameraPreset.get();
 	}
 
 }

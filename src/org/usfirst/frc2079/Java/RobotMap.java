@@ -100,5 +100,6 @@ public class RobotMap {
 
 		// Analog Input initialization
 		ai = new AnalogInput(0);
+		SmartDashboard.putNumber("Angle",RobotMap.camera.getAngle());
 	}
 }
