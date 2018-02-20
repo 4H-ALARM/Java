@@ -67,6 +67,7 @@ public class Robot extends TimedRobot {
         Scheduler.getInstance().run();
         reportPressure();
         reportSonar();
+        
     }
 
     @Override

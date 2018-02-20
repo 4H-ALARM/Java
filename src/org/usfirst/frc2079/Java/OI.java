@@ -19,6 +19,9 @@ public class OI {
 	public Joystick driveJoystickL;
 	public Joystick driveJoystickR;
 	public Joystick xboxController;
+	
+	public JoystickButton cameraControl;
+	public JoystickButton cameraPreset;
 
 	public JoystickButton winchOut1;
 	public JoystickButton winchOut2;
@@ -65,6 +68,12 @@ public class OI {
 		armUp.toggleWhenPressed(new MoveArm()); // When button 5 is pressed
 												// climbing arm swings up
 
+		cameraControl = new JoystickButton(manipJoystick, 8);
+		cameraControl.toggleWhenPressed(new ControlCamera());
+		
+		cameraPreset = new JoystickButton(manipJoystick,10);
+		cameraPreset.toggleWhenPressed(new CameraPreset());
+
 		// Puts commands into SmartDashboard
 		SmartDashboard.putData("DriveToLine", new DriveToLine());
 		SmartDashboard.putData("DriveWithJoysticks", new DriveWithJoysticks());
@@ -78,7 +87,7 @@ public class OI {
 		
 
 		// protected static void deleteHerobrine(){
-		// minecraft.delete("herobrine")
+		// 		minecraft.delete("herobrine")
 		// }
 
 		// System.out.print("effective. Power");
