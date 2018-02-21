@@ -1,3 +1,4 @@
+
 package org.usfirst.frc2079.Java.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
@@ -17,7 +18,7 @@ public class DriveWithJoysticks extends Command {
 
     @Override
     protected void execute() {
-    	Robot.driveTrain.drive(Robot.oi.xboxController/*driveJoystickL, Robot.oi.driveJoystickR*/); //Control drive train with xbox controller
+    	Robot.driveTrain.drive(Robot.oi.getDriveJoy()); //Control drive train with xbox controller
     }
 
     @Override

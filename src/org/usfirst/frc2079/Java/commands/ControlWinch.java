@@ -9,8 +9,8 @@ import edu.wpi.first.wpilibj.command.Command;
 public class ControlWinch extends Command{
 	
 	private double speed;
-	public ControlWinch(double v){
-		speed = v;
+	public ControlWinch(double s){
+		speed = s;
 		requires(Robot.climb);
 	}
 	
@@ -20,11 +20,10 @@ public class ControlWinch extends Command{
 
     @Override
     protected void execute() {
-    	System.out.println(Robot.oi.winchOut1.get());
-    	if(speed == -1 && Robot.oi.winchOut1.get()){
+    	if(speed == -1 && Robot.oi.reverseWinch()){//handle the reverse of the motor
     		RobotMap.winch.set(speed);
     	}
-    	else if(!MoveArm.armEnabled && speed != -1){
+    	else if(speed > 0){ //handle winch pulling in
     		RobotMap.winch.set(speed); //While this command is being called turn the winch
     	}
     }

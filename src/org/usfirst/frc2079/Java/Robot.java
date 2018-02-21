@@ -1,5 +1,7 @@
 package org.usfirst.frc2079.Java;
 
+import edu.wpi.first.wpilibj.AnalogInput;
+import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -19,7 +21,12 @@ public class Robot extends TimedRobot {
     public static Claw claw;
     public static Arm arm;
     public static Climb climb;
+    public static AnalogInput pGauge;
+    public static AnalogInput sonar;
+    
     private static double AutoTime;
+        
+    
     @Override
     public void robotInit() {
         RobotMap.init();
@@ -28,10 +35,12 @@ public class Robot extends TimedRobot {
         arm = new Arm();
         climb = new Climb();
         oi = new OI();
-
+        pGauge = new AnalogInput(1); //Pressure reading for analog channel 1
+        sonar = new AnalogInput(3); //Sonar for analog channel 3
+        
+        CameraServer.getInstance().startAutomaticCapture();
         autonomousCommand = new DriveToLine();
-        //chooser.addDefault("DriveToLine", new DriveToLine()); //Autonomous command set to DriveToLine
-        //SmartDashboard.putData("Auto mode", chooser);
+        
     }
 
     @Override
@@ -54,6 +63,9 @@ public class Robot extends TimedRobot {
     @Override
     public void autonomousPeriodic() {
         Scheduler.getInstance().run();
+        reportPressure();
+        reportSonar();
+        
     }
 
     @Override
@@ -63,11 +75,31 @@ public class Robot extends TimedRobot {
 
     @Override
     public void teleopPeriodic() {
-        Scheduler.getInstance().run();
-
+    	Scheduler.getInstance().run();
+    	reportPressure();
+    	reportSonar();
     }
     
     public static double getAutoTime(){
     	return AutoTime;
     }
+        
+    private void reportPressure() { //report to dash board if pressure is good
+    	double p = pGauge.getAverageVoltage(); 
+    	
+        if (p > 2.5) {
+        	// pressure good message to dash board
+        	SmartDashboard.putBoolean(" atPressure", true);
+        }
+        else {
+        	// pressure low message to dash board
+        	SmartDashboard.putBoolean(" atPressure", false);
+        }
+   }
+    private void reportSonar() {
+    	double h = sonar.getAverageVoltage();
+    	SmartDashboard.putNumber("sonarDistance", h);
+    }
+
+
 }
