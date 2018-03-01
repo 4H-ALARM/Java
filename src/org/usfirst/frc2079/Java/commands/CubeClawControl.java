@@ -42,6 +42,6 @@ public class CubeClawControl extends Command {
 	}
 
 	private boolean limitHit() {
-		return RobotMap.intakeLimit.get();
+		return !RobotMap.intakeLimit.get();
 	}
 }
