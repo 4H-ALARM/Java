@@ -1,7 +1,5 @@
 package org.usfirst.frc2079.Java;
 
-import org.usfirst.frc2079.Java.commands.ReadPressure;
-
 import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.DigitalInput;
@@ -46,9 +44,9 @@ public class RobotMap {
 	public static DigitalInput intakeLimit;
 
 	public static AnalogInput ai;
-	// public static PowerDistributionPanel pdp;
 
 	@SuppressWarnings("deprecation")
+	
 	public static void init() {
 		// Drive Train initializations
 		dtSpark1 = new Spark(0);
@@ -65,8 +63,7 @@ public class RobotMap {
 		dtSpark4.setInverted(false);
 		dtSCG1 = new SpeedControllerGroup(dtSpark1, dtSpark2);// Left side of robot
 		dtSCG2 = new SpeedControllerGroup(dtSpark3, dtSpark4);// Right side of robot
-		dtDrive = new DifferentialDrive(dtSCG1, dtSCG2); // Left+Right side of the robot controlled by tank drive
-															// controls
+		dtDrive = new DifferentialDrive(dtSCG1, dtSCG2); // Left+Right side of the robot controlled by tank drive controls
 
 		dtDrive.setSafetyEnabled(true);
 		dtDrive.setExpiration(0.1);
@@ -83,7 +80,7 @@ public class RobotMap {
 		clawSCG = new SpeedControllerGroup(clawLeft, clawRight); // Both claw motors controlled by one command
 
 		camera = new Servo(4);
-		SmartDashboard.putNumber("Angle", RobotMap.camera.getAngle());
+
 		// Winch initialization
 		winch = new Spark(6);
 		LiveWindow.addActuator("Winch", "Spark6", (Spark) winch);
@@ -101,9 +98,8 @@ public class RobotMap {
 		// Limit switch initialization
 		intakeLimit = new DigitalInput(4);
 
-		// Analogue Input initialization
+		// Analog Input initialization
 		ai = new AnalogInput(0);
-
-		// SmartDashboard.putNumber("sonarDistance", 0);
+		SmartDashboard.putNumber("Angle",RobotMap.camera.getAngle());
 	}
 }

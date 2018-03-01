@@ -9,7 +9,6 @@ public class CubeClawControl extends Command {
 	private double s;
 	public CubeClawControl(double speed) { //Allows this command to be used for both intake and ejection
 		s = speed;
-		// requires(Robot.claw);
 	}
 
 	@Override
@@ -43,6 +42,6 @@ public class CubeClawControl extends Command {
 	}
 
 	private boolean limitHit() {
-		return RobotMap.intakeLimit.get();
+		return !RobotMap.intakeLimit.get();
 	}
 }

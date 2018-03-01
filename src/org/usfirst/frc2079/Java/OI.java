@@ -6,99 +6,94 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 public class OI {
-	public Joystick leftJoystick;
-	public JoystickButton clawIntake;
-	public JoystickButton clawEject;
-	public JoystickButton clawDeploy;
-	public JoystickButton clawFlat;
-	public JoystickButton clawDown;
-	public JoystickButton armUp;
-	public JoystickButton armDown;
-	public JoystickButton climb;
-	public Joystick manipJoystick;
-	public Joystick driveJoystickL;
-	public Joystick driveJoystickR;
-	public Joystick xboxController;
-	
-	public JoystickButton cameraControl;
-	public JoystickButton cameraPreset;
+	private Joystick manipJoystick;
+	private Joystick xboxController;
 
-	public JoystickButton winchOut1;
-	public JoystickButton winchOut2;
+	private JoystickButton clawIntake;
+	private JoystickButton clawEject;
+	private JoystickButton clawDeploy;
+	private JoystickButton clawFlat;
+	private JoystickButton clawDown;
+
+	private JoystickButton armUp;
+	private JoystickButton armDown;
+	private JoystickButton climb;
+
+	private JoystickButton winchOut1;
+	private JoystickButton winchOut2;
+
+	private JoystickButton cameraControl;
+	private JoystickButton cameraPreset;
 
 	public OI() {
-		// driveJoystickL = new Joystick(0);
-		// driveJoystickR = new Joystick(1);
+		// Joysticks
 		xboxController = new Joystick(3);
 		manipJoystick = new Joystick(2);
+
 		// Claw controls
 		clawIntake = new JoystickButton(manipJoystick, 1);
-		clawIntake.whileHeld(new CubeClawControl(1.0)); // While trigger is held
-														// wheels spin inward
+		clawIntake.whileHeld(new CubeClawControl(1.0)); // While trigger is held wheels spin inward
 
 		clawEject = new JoystickButton(manipJoystick, 2);
-		clawEject.whileHeld(new CubeClawControl(-1.0)); // While button 2 is
-														// held wheels spin
-														// outward
-
+		clawEject.whileHeld(new CubeClawControl(-1.0)); // While button 2 is held wheels spin outward
 		clawDeploy = new JoystickButton(manipJoystick, 4);
-		clawDeploy.toggleWhenPressed(new DeployClaw()); // When button 3 is
-														// pressed claw extends
+
+		clawDeploy.toggleWhenPressed(new DeployClaw()); // When button 3 is pressed claw extends
 
 		clawFlat = new JoystickButton(manipJoystick, 5);
-		clawFlat.whileHeld(new TiltClaw('u')); // When button 10 is pressed claw
-												// flattens
+		clawFlat.whileHeld(new TiltClaw(1)); // When button 10 is pressed claw flattens
 
 		clawDown = new JoystickButton(manipJoystick, 3);
-		clawDown.whileHeld(new TiltClaw('d')); // When button 11 is pressed claw
-												// tilts down
+		clawDown.whileHeld(new TiltClaw(-1)); // When button 11 is pressed claw tilts down
 
 		// Lifting/Climbing Controls
 		climb = new JoystickButton(manipJoystick, 11);
-		climb.whileHeld(new ControlWinch(1.0)); // When button 6 is pressed
-												// cylinder retracts and winch
-												// motor spins
+		climb.whileHeld(new ControlWinch(1.0)); // When button 6 is pressed cylinder retracts and winch motor spins
 
 		winchOut1 = new JoystickButton(manipJoystick, 7);
-		winchOut2 = new JoystickButton(manipJoystick, 12);
+		winchOut2 = new JoystickButton(manipJoystick, 6);
 
 		winchOut2.whileHeld(new ControlWinch(-1));
 
 		armUp = new JoystickButton(manipJoystick, 9);
-		armUp.toggleWhenPressed(new MoveArm()); // When button 5 is pressed
-												// climbing arm swings up
+		armUp.toggleWhenPressed(new MoveArm()); // When button 5 is pressed climbing arm swings up
 
-		cameraControl = new JoystickButton(manipJoystick, 8);
+		// Camera
+		cameraControl = new JoystickButton(manipJoystick, 10);
 		cameraControl.toggleWhenPressed(new ControlCamera());
+
+		cameraPreset = new JoystickButton(manipJoystick, 12);
 		
-		cameraPreset = new JoystickButton(manipJoystick,10);
-		cameraPreset.toggleWhenPressed(new CameraPreset());
 
 		// Puts commands into SmartDashboard
 		SmartDashboard.putData("DriveToLine", new DriveToLine());
 		SmartDashboard.putData("DriveWithJoysticks", new DriveWithJoysticks());
-		SmartDashboard.putData("ClawUp", new TiltClaw('u'));
-		SmartDashboard.putData("ClawDown", new TiltClaw('d'));
+		SmartDashboard.putData("ClawUp", new TiltClaw(1));
+		SmartDashboard.putData("ClawDown", new TiltClaw(-1));
 		SmartDashboard.putData("DeployClawF", new DeployClaw());
 		SmartDashboard.putData("ClawIntake", new CubeClawControl(1.0));
 		SmartDashboard.putData("ClawEject", new CubeClawControl(-1.0));
 		SmartDashboard.putData("ArmUp", new MoveArm());
 		SmartDashboard.putData("Winch", new ControlWinch(1));
-		
-
-		// protected static void deleteHerobrine(){
-		// 		minecraft.delete("herobrine")
-		// }
 
 		// System.out.print("effective. Power");
 
 	}
 
-	public Joystick getLeftJoystick() {
-		return leftJoystick;
+	public double getManipAxis(int channel) { // Returns the value of a certain axis on the manipulator joystick
+		return manipJoystick.getRawAxis(channel);
+	}
+	
+	public Joystick getDriveJoy() {
+		return xboxController;
+	}
+	
+	public boolean reverseWinch() {
+		return winchOut1.get();
+	}
+	
+	public boolean cameraPresetPressed() {
+		return cameraPreset.get();
 	}
 
-	public Joystick getmanipJoystick() {
-		return manipJoystick;
-	}
 }
