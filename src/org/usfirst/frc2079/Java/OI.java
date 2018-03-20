@@ -14,7 +14,7 @@ public class OI {
 	private JoystickButton clawDeploy;
 	private JoystickButton clawFlat;
 	private JoystickButton clawDown;
-
+	
 	private JoystickButton armUp;
 	private JoystickButton armDown;
 	private JoystickButton climb;
@@ -59,11 +59,13 @@ public class OI {
 		armUp.toggleWhenPressed(new MoveArm()); // When button 5 is pressed climbing arm swings up
 
 		// Camera
-		cameraControl = new JoystickButton(manipJoystick, 10);
-		cameraControl.toggleWhenPressed(new ControlCamera());
+		//cameraControl = new JoystickButton(manipJoystick, 10);
+		//cameraControl.toggleWhenPressed(new ControlCamera());
 
-		cameraPreset = new JoystickButton(manipJoystick, 12);
+		//cameraPreset = new JoystickButton(manipJoystick, 12);
 		
+		cameraControl = new JoystickButton(xboxController, 1);
+		cameraControl.toggleWhenPressed(new ControlCamera());
 
 		// Puts commands into SmartDashboard
 		SmartDashboard.putData("DriveToLine", new DriveToLine());
@@ -75,6 +77,7 @@ public class OI {
 		SmartDashboard.putData("ClawEject", new CubeClawControl(-1.0));
 		SmartDashboard.putData("ArmUp", new MoveArm());
 		SmartDashboard.putData("Winch", new ControlWinch(1));
+		SmartDashboard.putString("Starting Position", "h");
 
 		// System.out.print("effective. Power");
 

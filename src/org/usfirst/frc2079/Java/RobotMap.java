@@ -42,6 +42,7 @@ public class RobotMap {
 	public static Servo camera;
 
 	public static DigitalInput intakeLimit;
+	public static DigitalInput autoSwitch;
 
 	public static AnalogInput ai;
 
@@ -97,6 +98,7 @@ public class RobotMap {
 
 		// Limit switch initialization
 		intakeLimit = new DigitalInput(4);
+		autoSwitch = new DigitalInput(0);
 
 		// Analog Input initialization
 		ai = new AnalogInput(0);

@@ -1,5 +1,7 @@
 package org.usfirst.frc2079.Java.commands;
 
+import java.util.concurrent.TimeUnit;
+
 import org.usfirst.frc2079.Java.Robot;
 import org.usfirst.frc2079.Java.RobotMap;
 
@@ -11,7 +13,7 @@ public class ControlWinch extends Command{
 	private double speed;
 	public ControlWinch(double s){
 		speed = s;
-		requires(Robot.climb);
+		//requires(Robot.climb);
 	}
 	
 	@Override
@@ -26,6 +28,11 @@ public class ControlWinch extends Command{
     	else if(speed > 0){ //handle winch pulling in
     		RobotMap.winch.set(speed); //While this command is being called turn the winch
     	}
+    	
+    	
+    	
+    	
+    	
     }
 
     @Override

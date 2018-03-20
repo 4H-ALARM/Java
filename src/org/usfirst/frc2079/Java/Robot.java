@@ -14,6 +14,7 @@ import org.usfirst.frc2079.Java.subsystems.Climb;
 public class Robot extends TimedRobot {
 
     Command autonomousCommand;
+    // Command playingPositionAuto;
     SendableChooser<Command> chooser = new SendableChooser<>();
 
     public static OI oi;
@@ -39,7 +40,8 @@ public class Robot extends TimedRobot {
         sonar = new AnalogInput(3); //Sonar for analog channel 3
         
         CameraServer.getInstance().startAutomaticCapture();
-        autonomousCommand = new DriveToLine();
+        autonomousCommand = new AutoGroup();
+        // autonomous Command = new DriveToLine();
         
     }
 
