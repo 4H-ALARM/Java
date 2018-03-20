@@ -29,17 +29,13 @@ public class DriveToLine extends Command {
 	protected void execute() {
 		if(!RobotMap.autoSwitch.get()) {
 			RobotMap.dtSCG1.set(0.79);  //
-			RobotMap.dtSCG2.set(-0.8); // Robot starts driving
+			RobotMap.dtSCG2.set(-0.8); // Robot starts driving forwards (dtSCG is backwards)
 		}
 	}
 
 	@Override
 	protected boolean isFinished() {
-		if (System.currentTimeMillis() < (start + t)) { // When the command is called get the new time, and if it hasn't
-														// been 4 seconds since the initial time do not end
-			return false;
-		}
-		return true;
+		return (System.currentTimeMillis() < (start + t));
 	}
 
 	@Override

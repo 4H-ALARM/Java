@@ -9,33 +9,40 @@ import org.usfirst.frc2079.Java.Robot;
 import org.usfirst.frc2079.Java.RobotMap;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-public class PlayingPosition extends Command {
+public class AutoRight extends Command {
 
 	private long start;
-	private double tUp, tDown;
+	private double tForwards, tTurn, tEject;
 	private double endTime;
 
-	public PlayingPosition() {
+	public AutoRight() {
 	}
 
 	@Override
 	protected void initialize() {
 		start = System.currentTimeMillis(); // Gets the current time in milliseconds
-		tUp = 2000;
-		tDown = 2000;
-		endTime = 15000;
+		tForwards = 1000;
+		tTurn = 400;
+		tEject = 200;
+		endTime = tForwards + tTurn + tEject;
 	}
 
 	@Override
 
 	protected void execute() {
-			if  (System.currentTimeMillis() < (start + tUp)){
-				RobotMap.dsClawTilt.set(Value.kForward); //Tilts up
-				RobotMap.sClawDeploy.set(true); //Deploys
+			if  (System.currentTimeMillis() < (start + tForwards)){
+				RobotMap.dtSCG1.set(0.79); //Forwards
+				RobotMap.dtSCG2.set(-0.80);
 			}
-			if (System.currentTimeMillis() > (start + tUp) && (System.currentTimeMillis() < (start + (tUp + tDown)))) {
-				RobotMap.dsClawTilt.set(Value.kReverse); //Tilts down
-			 }
+				
+			if (System.currentTimeMillis() > (start + tForwards+200) && (System.currentTimeMillis() < (start + (tForwards+tTurn)))) {
+				RobotMap.dtSCG1.set(-0.79); //Turn to the left
+				RobotMap.dtSCG2.set(-0.80);
+			}
+				
+			if (System.currentTimeMillis() > (start + (tForwards+tTurn)) && System.currentTimeMillis() < (start + endTime)) {
+				Robot.claw.spinWheels(-1.0); //Eject
+			}
 	}
 
 	@Override
@@ -45,7 +52,9 @@ public class PlayingPosition extends Command {
 
 	@Override
 	protected void end() {
-		RobotMap.dsClawTilt.set(Value.kOff); //Safety
+		RobotMap.dtSCG1.set(0);
+		RobotMap.dtSCG2.set(0);
+		Robot.claw.spinWheels(0.0);
 	}
 
 	@Override

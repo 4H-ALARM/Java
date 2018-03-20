@@ -9,33 +9,38 @@ import org.usfirst.frc2079.Java.Robot;
 import org.usfirst.frc2079.Java.RobotMap;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-public class PlayingPosition extends Command {
+public class AutoCenter extends Command {
 
 	private long start;
-	private double tUp, tDown;
+	private double tDrive, tEject;
 	private double endTime;
 
-	public PlayingPosition() {
+	public AutoCenter() {
 	}
 
 	@Override
 	protected void initialize() {
 		start = System.currentTimeMillis(); // Gets the current time in milliseconds
-		tUp = 2000;
-		tDown = 2000;
-		endTime = 15000;
+		tDrive = 500;
+		tEject = 200;
+		endTime = tDrive+tEject;
 	}
 
 	@Override
 
 	protected void execute() {
-			if  (System.currentTimeMillis() < (start + tUp)){
-				RobotMap.dsClawTilt.set(Value.kForward); //Tilts up
-				RobotMap.sClawDeploy.set(true); //Deploys
+			if  (System.currentTimeMillis() < (start + tDrive)){
+				if (DriverStation.getInstance().getGameSpecificMessage().charAt(0) == 'L') {
+					RobotMap.dtSCG1.set(0.77); //Drift to left
+					RobotMap.dtSCG2.set(-0.80);
+				} else {
+					RobotMap.dtSCG1.set(0.79); //Drift to right
+					RobotMap.dtSCG2.set(-0.78);
+				}
+			}			
+			if (System.currentTimeMillis() > (start + tDrive) && (System.currentTimeMillis() < (start + endTime))) {
+				Robot.claw.spinWheels(-1.0); //Eject
 			}
-			if (System.currentTimeMillis() > (start + tUp) && (System.currentTimeMillis() < (start + (tUp + tDown)))) {
-				RobotMap.dsClawTilt.set(Value.kReverse); //Tilts down
-			 }
 	}
 
 	@Override
@@ -45,7 +50,9 @@ public class PlayingPosition extends Command {
 
 	@Override
 	protected void end() {
-		RobotMap.dsClawTilt.set(Value.kOff); //Safety
+		RobotMap.dtSCG1.set(0);
+		RobotMap.dtSCG2.set(0);
+		Robot.claw.spinWheels(0.0);
 	}
 
 	@Override

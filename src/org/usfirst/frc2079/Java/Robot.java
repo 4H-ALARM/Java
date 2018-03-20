@@ -14,6 +14,7 @@ import org.usfirst.frc2079.Java.subsystems.Climb;
 public class Robot extends TimedRobot {
 
     Command autonomousCommand;
+    SendableChooser<Command> autoChooser;
     // Command playingPositionAuto;
     SendableChooser<Command> chooser = new SendableChooser<>();
 
@@ -40,14 +41,16 @@ public class Robot extends TimedRobot {
         sonar = new AnalogInput(3); //Sonar for analog channel 3
         
         CameraServer.getInstance().startAutomaticCapture();
-        autonomousCommand = new AutoGroup();
+
+        //autonomousCommand = new AutoGroup();
         // autonomous Command = new DriveToLine();
+        
         
     }
 
     @Override
     public void disabledInit(){
-    	//RobotMap.pneumaticsCompressor1.stop();
+
     }
 
     @Override
@@ -59,7 +62,13 @@ public class Robot extends TimedRobot {
     public void autonomousInit() {
         AutoTime = SmartDashboard.getNumber("AutoTime", 4000.0); //Autonomous timer pulled from SmartDashboard
         if (autonomousCommand != null) autonomousCommand.start();
-        
+        autoChooser = new SendableChooser<Command>();
+        //COMMENT BELOW CODE IF DOESNT WORK "//"
+        autoChooser.addDefault("Drive Forwards/Playing Position", new AutoDefault());
+        autoChooser.addObject("SwitchPlacer (Bot & switch on left)", new AutoLeft());
+        autoChooser.addObject("SwitchPlacer (Bot & switch on right)", new AutoRight());
+        autoChooser.addObject("SwitchPlacer (Bot in center)", new AutoCenter());
+        //UNCOMMENT CODE WAY ABOVE (autonomousCommand = new AutoGroup();) LINE IF AUTOCHOOSER DOESN'T WORK
     }
 
     @Override

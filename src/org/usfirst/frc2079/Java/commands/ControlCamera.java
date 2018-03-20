@@ -20,7 +20,7 @@ public class ControlCamera extends Command {
     }
 
     @Override
-    protected void execute() {
+    protected void execute() {   //Commented code is optional manip joystick code
     	/*SmartDashboard.putNumber("Angle",RobotMap.camera.getAngle());
     	if (Robot.oi.cameraPresetPressed() && RobotMap.camera.getAngle() == 150) { //If preset camera angle is down switch views
     		RobotMap.camera.setAngle(30);
@@ -38,10 +38,10 @@ public class ControlCamera extends Command {
     	
     	if (Robot.oi.getDriveJoy().getRawButton(6)) { //Right Bumper moves camera up
     		RobotMap.camera.set(val);
-    		if (val <= 0.97) { val+=0.03; }
+    		if (val <= 0.97) { val+=0.03; } //Increment
     	} else if (Robot.oi.getDriveJoy().getRawButton(5)) { //Left Bumper moves camera down
     		RobotMap.camera.set(val);
-    		if (val >= 0.03) { val -= 0.03; }
+    		if (val >= 0.03) { val -= 0.03; } //Decrement
     	}
     	
     }
