@@ -36,10 +36,10 @@ public class ControlCamera extends Command {
     		cameraInit = (Robot.oi.getManipAxis(3)+1)*0.5;
     	}*/
     	
-    	if (Robot.oi.getDriveJoy().getRawButton(6)) { //Right Bumper moves camera up
+    	if (Robot.oi.getDriveJoy().getRawButton(5)) { //Right Bumper moves camera up
     		RobotMap.camera.set(val);
     		if (val <= 0.97) { val+=0.03; } //Increment
-    	} else if (Robot.oi.getDriveJoy().getRawButton(5)) { //Left Bumper moves camera down
+    	} else if (Robot.oi.getDriveJoy().getRawButton(6)) { //Left Bumper moves camera down
     		RobotMap.camera.set(val);
     		if (val >= 0.03) { val -= 0.03; } //Decrement
     	}
