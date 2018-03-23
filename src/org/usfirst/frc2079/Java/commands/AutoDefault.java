@@ -4,7 +4,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 
 public class AutoDefault extends CommandGroup{
 	public AutoDefault() {
-		addParallel(new DriveToLine());
-		addParallel(new PlayingPosition());
+		addParallel(new DriveToLine()); //Drives and
+		addParallel(new PlayingPosition()); //brings arm up
 	}
 }

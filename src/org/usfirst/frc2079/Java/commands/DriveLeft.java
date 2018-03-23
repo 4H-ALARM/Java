@@ -30,6 +30,7 @@ public class DriveLeft extends Command {
 	@Override
 
 	protected void execute() {
+		if(!RobotMap.autoSwitch.get()) {
 			if  (System.currentTimeMillis() < (start + tForwards)){
 				RobotMap.dtSCG1.set(0.79); //Forwards
 				RobotMap.dtSCG2.set(-0.80);
@@ -43,6 +44,7 @@ public class DriveLeft extends Command {
 			if (System.currentTimeMillis() > (start + (tForwards+tTurn)) && System.currentTimeMillis() < (start + endTime)) {
 				Robot.claw.spinWheels(-1.0); //Eject
 			}
+		}
 	}
 
 	@Override

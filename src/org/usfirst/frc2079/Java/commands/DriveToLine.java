@@ -27,7 +27,7 @@ public class DriveToLine extends Command {
 	@Override
 
 	protected void execute() {
-		if(!RobotMap.autoSwitch.get()) {
+		if(!RobotMap.autoSwitch.get()) { //If plugged in
 			RobotMap.dtSCG1.set(0.79);  //
 			RobotMap.dtSCG2.set(-0.8); // Robot starts driving forwards (dtSCG is backwards)
 		}

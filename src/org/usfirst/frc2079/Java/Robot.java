@@ -44,7 +44,15 @@ public class Robot extends TimedRobot {
 
         //autonomousCommand = new AutoGroup();
         // autonomous Command = new DriveToLine();
+        //UNCOMMENT CODE ABOVE IF AUTOCHOOSER DOESN'T WORK
         
+        //COMMENT BELOW CODE IF DOESNT WORK "//"
+        autoChooser = new SendableChooser<Command>();
+        autoChooser.addDefault("Drive Forwards/Playing Position", new AutoDefault());
+        autoChooser.addObject("SwitchPlacer (Bot & switch on left)", new AutoLeft());
+        autoChooser.addObject("SwitchPlacer (Bot & switch on right)", new AutoRight());
+        autoChooser.addObject("SwitchPlacer (Bot in center)", new AutoCenter());
+        SmartDashboard.putData("Autonomous Chooser", autoChooser);
         
     }
 
@@ -60,15 +68,11 @@ public class Robot extends TimedRobot {
 
     @Override
     public void autonomousInit() {
-        AutoTime = SmartDashboard.getNumber("AutoTime", 4000.0); //Autonomous timer pulled from SmartDashboard
+        autonomousCommand = autoChooser.getSelected();
         if (autonomousCommand != null) autonomousCommand.start();
-        autoChooser = new SendableChooser<Command>();
-        //COMMENT BELOW CODE IF DOESNT WORK "//"
-        autoChooser.addDefault("Drive Forwards/Playing Position", new AutoDefault());
-        autoChooser.addObject("SwitchPlacer (Bot & switch on left)", new AutoLeft());
-        autoChooser.addObject("SwitchPlacer (Bot & switch on right)", new AutoRight());
-        autoChooser.addObject("SwitchPlacer (Bot in center)", new AutoCenter());
-        //UNCOMMENT CODE WAY ABOVE (autonomousCommand = new AutoGroup();) LINE IF AUTOCHOOSER DOESN'T WORK
+
+
+        
     }
 
     @Override

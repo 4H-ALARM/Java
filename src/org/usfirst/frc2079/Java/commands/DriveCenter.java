@@ -21,7 +21,7 @@ public class DriveCenter extends Command {
 	@Override
 	protected void initialize() {
 		start = System.currentTimeMillis(); // Gets the current time in milliseconds
-		tDrive = 500;
+		tDrive = 600;
 		tEject = 200;
 		endTime = tDrive+tEject;
 	}
@@ -29,18 +29,24 @@ public class DriveCenter extends Command {
 	@Override
 
 	protected void execute() {
+		if(!RobotMap.autoSwitch.get()) {
 			if  (System.currentTimeMillis() < (start + tDrive)){
 				if (DriverStation.getInstance().getGameSpecificMessage().charAt(0) == 'L') {
 					RobotMap.dtSCG1.set(0.77); //Drift to left
 					RobotMap.dtSCG2.set(-0.80);
-				} else {
+				} else if((DriverStation.getInstance().getGameSpecificMessage().charAt(0) == 'R')) {
 					RobotMap.dtSCG1.set(0.79); //Drift to right
 					RobotMap.dtSCG2.set(-0.78);
+				} 
+				else {
+					RobotMap.dtSCG1.set(0); //Drift to right
+					RobotMap.dtSCG2.set(0);
 				}
 			}			
 			if (System.currentTimeMillis() > (start + tDrive) && (System.currentTimeMillis() < (start + endTime))) {
 				Robot.claw.spinWheels(-1.0); //Eject
 			}
+		}
 	}
 
 	@Override
