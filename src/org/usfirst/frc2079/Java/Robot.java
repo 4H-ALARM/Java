@@ -54,6 +54,7 @@ public class Robot extends TimedRobot {
         autoChooser.addObject("SwitchPlacer (Bot in center)", new AutoCenter());
         SmartDashboard.putData("Autonomous Chooser", autoChooser);
         
+        
     }
 
     @Override
@@ -68,7 +69,7 @@ public class Robot extends TimedRobot {
 
     @Override
     public void autonomousInit() {
-        autonomousCommand = autoChooser.getSelected();
+    	autonomousCommand = autoChooser.getSelected();
         if (autonomousCommand != null) autonomousCommand.start();
 
 

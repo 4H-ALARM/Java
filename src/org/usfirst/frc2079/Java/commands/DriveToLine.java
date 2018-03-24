@@ -35,7 +35,7 @@ public class DriveToLine extends Command {
 
 	@Override
 	protected boolean isFinished() {
-		return (System.currentTimeMillis() < (start + t));
+		return (System.currentTimeMillis() > (start + t));
 	}
 
 	@Override

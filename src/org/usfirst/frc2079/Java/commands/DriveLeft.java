@@ -36,7 +36,7 @@ public class DriveLeft extends Command {
 				RobotMap.dtSCG2.set(-0.80);
 			}
 				
-			if (System.currentTimeMillis() > (start + tForwards+200) && (System.currentTimeMillis() < (start + (tForwards+tTurn)))) {
+			if (System.currentTimeMillis() > (start + tForwards) && (System.currentTimeMillis() < (start + (tForwards+tTurn)))) {
 				RobotMap.dtSCG1.set(0.79); //Turn to the right
 				RobotMap.dtSCG2.set(0.80);
 			}
@@ -49,7 +49,7 @@ public class DriveLeft extends Command {
 
 	@Override
 	protected boolean isFinished() {
-		return (System.currentTimeMillis() < (start + endTime));
+		return (System.currentTimeMillis() > (start + endTime));
 	}
 
 	@Override

@@ -23,7 +23,7 @@ public class PlayingPosition extends Command {
 		start = System.currentTimeMillis(); // Gets the current time in milliseconds
 		tUp = 2000;
 		tDown = 2000;
-		endTime = 15000;
+		endTime = tUp + tDown;
 	}
 
 	@Override
@@ -40,7 +40,7 @@ public class PlayingPosition extends Command {
 
 	@Override
 	protected boolean isFinished() {
-		return (System.currentTimeMillis() < (start + endTime));
+		return (System.currentTimeMillis() > (start + endTime));
 	}
 
 	@Override

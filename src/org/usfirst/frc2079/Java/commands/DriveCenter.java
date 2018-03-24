@@ -51,7 +51,7 @@ public class DriveCenter extends Command {
 
 	@Override
 	protected boolean isFinished() {
-		return (System.currentTimeMillis() < (start + endTime));
+		return (System.currentTimeMillis() > (start + endTime));
 	}
 
 	@Override
