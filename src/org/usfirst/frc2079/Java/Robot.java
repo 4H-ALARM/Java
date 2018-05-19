@@ -49,9 +49,9 @@ public class Robot extends TimedRobot {
         //COMMENT BELOW CODE IF DOESNT WORK "//"
         autoChooser = new SendableChooser<Command>();
         autoChooser.addDefault("Drive Forwards/Playing Position", new AutoDefault());
-        autoChooser.addObject("SwitchPlacer (Bot & switch on left)", new AutoLeft());
-        autoChooser.addObject("SwitchPlacer (Bot & switch on right)", new AutoRight());
-        autoChooser.addObject("SwitchPlacer (Bot in center)", new AutoCenter());
+        autoChooser.addObject("SwitchPlacer (Robot on left)", new AutoLeft());
+        autoChooser.addObject("SwitchPlacer (Robot on right)", new AutoRight());
+        autoChooser.addObject("SwitchPlacer (Robot in center)", new AutoCenter());
         SmartDashboard.putData("Autonomous Chooser", autoChooser);
         
         

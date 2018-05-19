@@ -21,7 +21,7 @@ public class DriveRight extends Command {
 	@Override
 	protected void initialize() {
 		start = System.currentTimeMillis(); // Gets the current time in milliseconds
-		tForwards = 1000;
+		tForwards = 1800;
 		tTurn = 400;
 		tEject = 200;
 		endTime = tForwards + tTurn + tEject;
@@ -36,12 +36,12 @@ public class DriveRight extends Command {
 				RobotMap.dtSCG2.set(-0.80);
 			}
 				
-			if (System.currentTimeMillis() > (start + tForwards+200) && (System.currentTimeMillis() < (start + (tForwards+tTurn)))) {
+			if (DriverStation.getInstance().getGameSpecificMessage().charAt(0) == 'R' && System.currentTimeMillis() > (start + tForwards) && (System.currentTimeMillis() < (start + (tForwards+tTurn)))) {
 				RobotMap.dtSCG1.set(-0.79); //Turn to the left
 				RobotMap.dtSCG2.set(-0.80);
 			}
 				
-			if (System.currentTimeMillis() > (start + (tForwards+tTurn)) && System.currentTimeMillis() < (start + endTime)) {
+			if (DriverStation.getInstance().getGameSpecificMessage().charAt(0) == 'R' && System.currentTimeMillis() > (start + (tForwards+tTurn)+2000) && System.currentTimeMillis() < (start + endTime+3000)) {
 				Robot.claw.spinWheels(-1.0); //Eject
 			}
 		}
@@ -49,7 +49,7 @@ public class DriveRight extends Command {
 
 	@Override
 	protected boolean isFinished() {
-		return (System.currentTimeMillis() > (start + endTime));
+		return (System.currentTimeMillis() > (start + endTime+3000));
 	}
 
 	@Override

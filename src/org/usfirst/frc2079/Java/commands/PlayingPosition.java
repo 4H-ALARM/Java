@@ -12,7 +12,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class PlayingPosition extends Command {
 
 	private long start;
-	private double tUp, tDown;
+	private double tUp;
 	private double endTime;
 
 	public PlayingPosition() {
@@ -21,9 +21,8 @@ public class PlayingPosition extends Command {
 	@Override
 	protected void initialize() {
 		start = System.currentTimeMillis(); // Gets the current time in milliseconds
-		tUp = 2000;
-		tDown = 2000;
-		endTime = tUp + tDown;
+		tUp = 1700;
+		endTime = tUp;
 	}
 
 	@Override
